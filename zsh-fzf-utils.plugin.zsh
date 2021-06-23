@@ -75,8 +75,9 @@ _zsh_asdf_direnv_install_asdf() {
   _zsh_asdf_direnv_log "none" "blue" "#############################################"
 }
 
-# source asdf and run the direnv hook
+# source asdf and run the direnv hook, after adding completions to path
 _zsh_asdf_direnv_load() {
+  fpath=(${ASDF_DIR}/completions $fpath)
   source "$ASDF_DIR/asdf.sh"
   eval "$(asdf exec direnv hook zsh)"
 }
