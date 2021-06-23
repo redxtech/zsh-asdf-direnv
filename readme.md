@@ -30,6 +30,11 @@ If asdf hasn't been installed yet, it will be installed for you (`git clone` int
 If direnv hasn't been installed yet, it will be installed for you (`asdf plugin add direnv`
 & `asdf install direnv latest`).
 
+## Config
+If you set the environment variable `ZSH_ASDF_DIRENV_LIBONLY` to `"true"`, it will only add
+`$ASDF_DIR/bin` to path and source `$ASDF_DIR/lib/asdf.sh` in order to not put `$ASDF_DIR/shims`
+in the path.
+
 ## Author
 **asdf-direnv** © [Gabe Dunn](https://github.com/redxtech), Released under the [MIT](./license.md) License.
 
