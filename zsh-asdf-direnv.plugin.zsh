@@ -78,7 +78,15 @@ _zsh_asdf_direnv_install_asdf() {
 # source asdf and run the direnv hook, after adding completions to path
 _zsh_asdf_direnv_load() {
   fpath=(${ASDF_DIR}/completions $fpath)
-  source "$ASDF_DIR/asdf.sh"
+
+  # if specified only load the asdf wrapper, leaving the shims out of path
+  if test "$ZSH_ASDF_DIRENV_LIBONLY" = "true"; then
+    PATH="$PATH:$ASDF_DIR/bin"
+    source "$ASDF_DIR/lib/asdf.sh"
+  else
+    source "$ASDF_DIR/asdf.sh"
+  fi
+
   eval "$(asdf exec direnv hook zsh)"
 }
 
