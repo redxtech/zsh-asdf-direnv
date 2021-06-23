@@ -40,6 +40,7 @@ _zsh_asdf_direnv_install_direnv() {
   if test ! "$(asdf list direnv 2>/dev/null | wc -l)" -gt 0; then
     _zsh_asdf_direnv_log "none" "blue" "-> Installing latest direnv..."
     asdf install direnv latest
+    asdf global direnv latest
   fi
 
   _zsh_asdf_direnv_log "bold" "green" "-> direnv install OK"
