@@ -18,7 +18,7 @@ _zsh_asdf_direnv_log() {
     format_start="%B$format_start"
     format_end="$format_end%b"
   fi
-  
+
   # print -P for proper formatting of %F & %B
   print -P "$format_start\[zsh-asdf-direnv] $msg$format_end"
 }
@@ -52,7 +52,6 @@ _zsh_asdf_direnv_install_asdf() {
   _zsh_asdf_direnv_log "bold" "blue" "Installing asdf..."
   _zsh_asdf_direnv_log "none" "blue" "-> cloning asdf into home dir: $ASDF_DIR"
 
-
   # if asdf isn't already installed, clone the repo
   if test -d "$ASDF_DIR"; then
     _zsh_asdf_direnv_log "bold" "blue" "-> asdf home dir already exists, skipping..."
@@ -69,9 +68,6 @@ _zsh_asdf_direnv_install_asdf() {
       _zsh_asdf_direnv_log "bold" "green" "-> asdf install OK"
     fi
   fi
-
-  # now install direnv
-  _zsh_asdf_direnv_install_direnv
 
   _zsh_asdf_direnv_log "none" "blue" "#############################################"
 }
@@ -93,6 +89,8 @@ _zsh_asdf_direnv_load() {
 
 # if asdf isn't installed, install it
 [[ ! -d "$ASDF_DIR" ]] && _zsh_asdf_direnv_install_asdf
+
+[[ ! -d "~/.direnv" ]] && _zsh_asdf_direnv_install_direnv
 
 # if asdf is installed, load it
 [[ -d "$ASDF_DIR" ]] && _zsh_asdf_direnv_load
