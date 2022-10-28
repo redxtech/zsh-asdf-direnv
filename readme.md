@@ -19,7 +19,10 @@ Install it with your favourite zsh package manager, or clone it directly to your
 array in your `.zshrc` file:
 
 ```zsh
-plugins=(... zsh-asdf-direnv)
+export ASDF_DIR="$HOME/.asdf"
+fpath=(${ASDF_DIR}/completions $fpath)
+
+plugins = (... zsh-asdf-direnv)
 ```
 
 ## Usage
