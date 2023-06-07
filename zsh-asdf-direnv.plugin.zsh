@@ -92,8 +92,6 @@ _zsh_asdf_direnv_load() {
 
 if [[ ! -z "${ASDF_DATA_DIR}" ]]; then
   ASDF_DATA_DIR="$ASDF_DIR/installs/direnv"
-else
-  MY_SCRIPT_VARIABLE="${DEPLOY_ENV}"
 fi
 
 [[ ! -d "$ASDF_DATA_DIR" ]] && _zsh_asdf_direnv_install_direnv
