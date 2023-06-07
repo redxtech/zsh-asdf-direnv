@@ -90,7 +90,13 @@ _zsh_asdf_direnv_load() {
 # if asdf isn't installed, install it
 [[ ! -d "$ASDF_DIR" ]] && _zsh_asdf_direnv_install_asdf
 
-[[ ! -d "$ASDF_DIR/installs/direnv" ]] && _zsh_asdf_direnv_install_direnv
+if [[ ! -z "${ASDF_DATA_DIR}" ]]; then
+  ASDF_DATA_DIR="$ASDF_DIR/installs/direnv"
+else
+  MY_SCRIPT_VARIABLE="${DEPLOY_ENV}"
+fi
+
+[[ ! -d "$ASDF_DATA_DIR" ]] && _zsh_asdf_direnv_install_direnv
 
 # if asdf is installed, load it
 [[ -d "$ASDF_DIR" ]] && _zsh_asdf_direnv_load
