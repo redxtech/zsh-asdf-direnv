@@ -88,9 +88,10 @@ _zsh_asdf_direnv_load() {
 # if asdf isn't installed, install it
 [[ ! -d "$ASDF_DIR" ]] && _zsh_asdf_direnv_install_asdf
 
-ASDF_DATA_DIR="${ASDF_DATA_DIR:-"$ASDF_DIR/installs/direnv"}"
+local asdf_direnv_dir
+asdf_direnv_dir="${ASDF_DATA_DIR:-"$ASDF_DIR/installs/direnv"}"
 
-[[ ! -d "$ASDF_DATA_DIR" ]] && _zsh_asdf_direnv_install_direnv
+[[ ! -d "$asdf_direnv_dir" ]] && _zsh_asdf_direnv_install_direnv
 
 # if asdf is installed, load it
 [[ -d "$ASDF_DIR" ]] && _zsh_asdf_direnv_load
