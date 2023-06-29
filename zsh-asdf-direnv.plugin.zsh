@@ -82,6 +82,8 @@ _zsh_asdf_direnv_load() {
     source "$ASDF_DIR/asdf.sh"
   fi
 
+  fpath+="$ASDF_DIR/completions"
+
   eval "$(asdf exec direnv hook zsh)"
 }
 
